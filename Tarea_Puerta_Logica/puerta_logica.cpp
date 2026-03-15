@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cctype>
 
 using namespace std;
 
@@ -10,6 +11,7 @@ int main()
     double promedio;
     int miembroclub;
     bool acceso = false;
+
 
     cout << "Ingrese nombre completo: ";
     getline(cin, nombre);
