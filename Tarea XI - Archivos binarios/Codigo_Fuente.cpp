@@ -78,31 +78,31 @@ void RegistrarProducto() {
     MostrarEncabezado();
     cout << "REGISTRAR NUEVO PRODUCTO\n\n";
 
-    Producto p;
+    Producto rp;
 
     cout << "Ingrese el Codigo: ";
-    cin >> p.codigo;
+    cin >> rp.codigo;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     cout << "Ingrese el Nombre: ";
-    cin.getline(p.nombre, 40);
+    cin.getline(rp.nombre, 40);
 
     cout << "Ingrese la Categoria: ";
-    cin.getline(p.categoria, 30);
+    cin.getline(rp.categoria, 30);
 
     cout << "Ingrese el Stock: ";
-    cin >> p.stock;
+    cin >> rp.stock;
 
     cout << "Ingrese el Precio: ";
-    cin >> p.precio;
+    cin >> rp.precio;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    p.activo = true;
+    rp.activo = true;
 
     ofstream archivo(ARCHIVO_PRODUCTOS, ios::binary | ios::app);
 
     if (archivo.is_open()) {
-        archivo.write(reinterpret_cast<char*>(&p), sizeof(Producto));
+        archivo.write(reinterpret_cast<char*>(&rp), sizeof(Producto));
         archivo.close();
         cout << "\n[!] Producto registrado y guardado exitosamente.\n";
     } else {
@@ -117,20 +117,20 @@ void ListarProductos() {
     MostrarEncabezado();
     cout << "LISTADO DE PRODUCTOS\n\n";
 
-    Producto p;
+    Producto lp;
     bool HayProductos = false;
 
     ifstream archivo(ARCHIVO_PRODUCTOS, ios::in | ios::binary);
 
     if (archivo.is_open()) {
-        while (archivo.read(reinterpret_cast<char*>(&p), sizeof(Producto))) {
+        while (archivo.read(reinterpret_cast<char*>(&lp), sizeof(Producto))) {
             HayProductos = true;
-            cout << "Codigo: " << p.codigo << "\n";
-            cout << "Nombre: " << p.nombre << "\n";
-            cout << "Categoria: " << p.categoria << "\n";
-            cout << "Stock: " << p.stock << "\n";
-            cout << "Precio: Q" << p.precio << "\n";
-            cout << "Estado: " << (p.activo ? "Activo" : "Inactivo") << "\n";
+            cout << "Codigo: " << lp.codigo << "\n";
+            cout << "Nombre: " << lp.nombre << "\n";
+            cout << "Categoria: " << lp.categoria << "\n";
+            cout << "Stock: " << lp.stock << "\n";
+            cout << "Precio: Q" << lp.precio << "\n";
+            cout << "Estado: " << (lp.activo ? "Activo" : "Inactivo") << "\n";
         }
         archivo.close();
 
