@@ -9,7 +9,8 @@ set(EXECUTABLES)
 foreach(src ${SRC_FILES})
     get_filename_component(name ${src} NAME_WE)
     add_executable(${name} ${src}
-            "Tarea XI - Archivos binarios/Codigo_Fuente.cpp")
+            "Tarea XI - Archivos binarios/Codigo_Fuente.cpp"
+            "Tarea XII - CRUD en Archivos Binarios/Codigo_Fuente.cpp")
     list(APPEND EXECUTABLES ${name})
 endforeach()
 
