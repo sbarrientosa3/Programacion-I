@@ -1,4 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
-project(MiProyecto LANGUAGES CXX)
+#include <iostream>
 
-set(CMAKE_CXX_STANDARD 17)
+int main() {
+int edad  20;
+cout <<"Tu edad es:" << edad;
+return 0;
+}
