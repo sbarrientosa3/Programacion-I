@@ -6,7 +6,7 @@ int main() {
     float notas[4][3];
 
     for (int i = 0; i < 4; i++) {
-        cout << "Estudiante" << i + 1 << " ---" << endl;
+        cout << "Estudiante " << i + 1 << endl;
         for (int j = 0; j < 3; j++) {
             cout << "Nota evaluacion " << j + 1 << ": ";
             cin >> notas[i][j];

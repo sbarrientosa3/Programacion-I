@@ -2,40 +2,56 @@
 using namespace std;
 
 int main() {
-    float temps[7];
-    float suma = 0, promedio;
-    float MaxTemp, MinTemp;
 
-    for (int i = 0; i < 7; i++) {
-        cout << "Ingrese la temperatura del dia " << i + 1 << ": ";
-        cin >> temps[i];
-        suma += temps[i];
+    int numeros[10];
+    bool HayRepetidos = false;
+
+    cout << "Ingrese 10 numeros enteros:" << endl;
+    for (int i = 0; i < 10; i++) {
+        cin >> numeros[i];
     }
 
-    promedio = suma / 7.0;
-    MaxTemp = temps[0];
-    MinTemp = temps[0];
+    cout << "Analizando..." << endl;
 
-    for (int i = 1; i < 7; i++) {
-        if (temps[i] > MaxTemp) MaxTemp = temps[i];
-        if (temps[i] < MinTemp) MinTemp = temps[i];
+    bool YaImpreso[10] = {false};
+
+    for (int i = 0; i < 10; i++) {
+        bool EsRepetido = false;
+        for(int k = 0; k < i; k++) {
+            if(numeros[i] == numeros[k]) {
+                YaImpreso[i] = true;
+                break;
+            }
+        }
+
+        if (!YaImpreso[i]) {
+            for (int j = i + 1; j < 10; j++) {
+                if (numeros[i] == numeros[j]) {
+                    EsRepetido = true;
+                    HayRepetidos = true;
+                    break;
+                }
+            }
+            if (EsRepetido) {
+                if (HayRepetidos && i == 0) {
+                    cout << "Existen numeros repetidos." << endl;
+                    cout << "Numeros repetidos encontrados:" << endl;
+                } else if (HayRepetidos && i > 0 && !YaImpreso[0]) {
+                    static bool TituloImpreso = false;
+                    if(!TituloImpreso){
+                        cout << "Existen numeros repetidos." << endl;
+                        cout << "Numeros repetidos encontrados:" << endl;
+                        TituloImpreso = true;
+                    }
+                }
+                cout << numeros[i] << endl;
+            }
+        }
     }
 
-    int arriba = 0, debajo = 0;
-    for (int i = 0; i < 7; i++) {
-        if (temps[i] > promedio) arriba++;
-        else if (temps[i] < promedio) debajo++;
+    if (!HayRepetidos) {
+        cout << "No existen numeros repetidos." << endl;
     }
-
-    cout << "Resultados" << endl;
-    cout << "Temperaturas ingresadas: ";
-    for (int i = 0; i < 7; i++) cout << temps[i] << " ";
-
-    cout << "\nTemperatura mas alta: " << MaxTemp << endl;
-    cout << "Temperatura mas baja: " << MinTemp << endl;
-    cout << "Promedio semanal: " << promedio << endl;
-    cout << "Dias arriba del promedio: " << arriba << endl;
-    cout << "Dias debajo del promedio: " << debajo << endl;
 
     return 0;
 }
