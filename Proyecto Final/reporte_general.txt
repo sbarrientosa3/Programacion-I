@@ -1,0 +1,4 @@
+REPORTE GENERAL DE INVENTARIO
+
+Codigo: 1 | Nombre: lapiz | Stock: 75 | Ventas: 25
+Codigo: 3 | Nombre: lapicero | Stock: 170 | Ventas: 0
